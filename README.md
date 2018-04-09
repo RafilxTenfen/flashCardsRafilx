@@ -7,8 +7,9 @@ Udacity Flash Cards is a project for Udacity React Nanodegree program, React Nat
 ## Install and Run
 
 ```
-git clone 'project Url'
+git clone 'https://github.com/RafilxTenfen/flashCardsRafilx'
 cd flashCardsRafilx
+yarn install
 yarn start 
 ``` 
 
