@@ -2,6 +2,7 @@ import React , { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import {black, white, green, red} from "../utils/colors"
 import { connect } from 'react-redux'
+import {clearLocalNotification, setLocalNotification} from "../utils/notifications";
 
 class StartQuiz extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class StartQuiz extends Component {
         this.state = {
             deck: (props.deck)
                 ? (props.deck)
-                : {title:'', questions:[]},
+                : {title: '', questions: []},
             index: 0,
             corrects: 0,
             bAnswer: false
@@ -40,6 +41,8 @@ class StartQuiz extends Component {
     }
 
     onPressFinalHome = () => {
+        this.finalizouQuiz()
+
         this.setState({
             index: 0,
             corrects: 0,
@@ -51,6 +54,7 @@ class StartQuiz extends Component {
     }
 
     onPressRestartQuiz = () => {
+        this.finalizouQuiz()
         this.setState({
             index: 0,
             corrects: 0,
@@ -58,20 +62,27 @@ class StartQuiz extends Component {
         })
     }
 
+    finalizouQuiz = () => {
+        if(this.state.index === this.state.deck.questions.length){
+            clearLocalNotification()
+                .then(setLocalNotification)
+        }
+    }
+
     render() {
-        const { deck, index, bAnswer, corrects } = this.state
+        const {deck, index, bAnswer, corrects} = this.state
 
         return (
             <View style={styles.container}>
                 {(index < deck.questions.length)
-                    ? <View style={{flex:1}}>
+                    ? <View style={{flex: 1}}>
                         <View style={styles.topView}>
                             <Text style={{textAlign: 'left', fontSize: 22}}>
-                                {(index + 1 ).toString() + ' / ' + deck.questions.length}</Text>
+                                {(index + 1).toString() + ' / ' + deck.questions.length}</Text>
                         </View>
                         <View style={styles.questionView}>
                             {(!bAnswer)
-                                ? <View styles={{flex: 1}}>
+                                ? <View style={{flex: 1}}>
                                     <Text style={styles.textQuestion}
                                     >{deck.questions[index].question}</Text>
                                     <TouchableOpacity
@@ -82,7 +93,7 @@ class StartQuiz extends Component {
                                         <Text style={styles.textBtnQuestion}>Answer</Text>
                                     </TouchableOpacity>
                                 </View>
-                                : <View styles={{flex:1}}>
+                                : <View style={{flex: 1}}>
                                     <Text style={styles.textQuestion}
                                     >{deck.questions[index].answer}</Text>
                                     <TouchableOpacity
@@ -101,24 +112,25 @@ class StartQuiz extends Component {
                                 style={styles.btnCorrect}
                                 onPress={this.onPressCorrect}
                             >
-                                <Text style={{color: white, fontSize:18}}>Correct</Text>
+                                <Text style={{color: white, fontSize: 18}}>Correct</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 disabled={!bAnswer}
                                 style={styles.btnIncorrect}
                                 onPress={this.onPressIncorrect}
                             >
-                                <Text style={{color: white, fontSize:18}}>Incorrect</Text>
+                                <Text style={{color: white, fontSize: 18}}>Incorrect</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
-                    : <View style={styles.finalView}>
+                    :
+                    <View style={styles.finalView}>
                         <Text style={styles.textPercent}
                         >Your percentage of correct questions is</Text>
                         <Text style={styles.textQuestion}>
                             {(corrects > 0)
-                               ? ((100 / deck.questions.length) * corrects).toFixed(2)
-                               : (0.00).toString()} %</Text>
+                                ? ((100 / deck.questions.length) * corrects).toFixed(2)
+                                : (0.00).toString()} %</Text>
                         <TouchableOpacity
                             style={styles.btnHome}
                             onPress={this.onPressFinalHome}

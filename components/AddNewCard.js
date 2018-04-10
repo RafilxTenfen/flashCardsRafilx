@@ -18,8 +18,10 @@ class AddNewCard extends Component {
     }
 
     static navigationOptions = ({navigation}) => {
+        var sTitle = navigation.state.params.deck.title.split(' ')
+
         const title = {
-            title: `Add Card to ${navigation.state.params.deck.title}`
+            title: `Add Card to ${sTitle[0]}`
         }
         return title
     }
@@ -43,21 +45,16 @@ class AddNewCard extends Component {
                 .then(() => {
                     this.props.navigation.dispatch(NavigationActions.back())
                 })
-            this.setState({
-                question: '',
-                answer: ''
-            })
+            this.cleanInputs()
         }
     }
 
     handleChangeQuestion = (question) => {
-        if(question)
-            this.setState({question: question})
+        this.setState({question: question})
     }
 
     handleChangeAnswer = (answer) => {
-        if(answer)
-            this.setState({answer: answer})
+        this.setState({answer: answer})
     }
 
     isEmptyQuestionAnswer(){

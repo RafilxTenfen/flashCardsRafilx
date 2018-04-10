@@ -21,7 +21,7 @@ export default class ItemDeck extends Component {
                         {capitalize(deck.item.title)}
                     </Text>
                     <Text style={{color: gray, fontSize: 18}}>
-                        {(deck.item.questions) ? (deck.item.questions.length) : (0)} cards
+                        {(deck.item.questions) ? (deck.item.questions.length + ' cards') : (0 + ' card')}
                     </Text>
                 </TouchableOpacity>
             </View>

@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView} from 'react-native'
 import {black, gray, white} from '../utils/colors'
 import { connect } from 'react-redux'
-import {
-    clearLocalNotification,
-    setLocalNotification
-} from '../utils/notifications'
 
 
 class DeckIndividual extends Component {
@@ -29,8 +25,6 @@ class DeckIndividual extends Component {
     }
 
     onPressStart = () => {
-        clearLocalNotification()
-            .then(setLocalNotification)
 
         this.setState({
             deck: this.props.decks[this.state.deck.title]
@@ -55,7 +49,7 @@ class DeckIndividual extends Component {
                             {(deck.title)?(deck.title):(this.props.navigation.state.params.deck.title)}
                         </Text>
                         <Text style={styles.cardNumbers}>
-                            {(questions) ? (questions.length) : (0)} Cards
+                            {(questions) ? (questions.length + ' Cards') : (0 + ' Card')}
                         </Text>
                     </View>
                     <View style={styles.btnView}>
