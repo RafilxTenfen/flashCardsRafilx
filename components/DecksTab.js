@@ -31,7 +31,7 @@ class DecksTab extends React.Component {
     _listEmptyItem = () => {
         return(
             <View style={styles.container} key='empty'>
-                <Text style={{marginTop: 50, fontSize: 18}}>
+                <Text style={{marginTop: 50, fontSize: 18, textAlign:'center'}}>
                     There is no Decks
                 </Text>
             </View>
@@ -56,12 +56,15 @@ class DecksTab extends React.Component {
                     ListEmptyComponent={this._listEmptyItem}
                     keyExtractor={this._keyExtractor}
                     ItemSeparatorComponent={SeparatorDecks}
+                    style={styles.flatStyle}
                 />
                 <View style={styles.separator}/>
                 <Button
                     onPress={this.handleResetBtn}
                     title='RESET'
                     color={purple}
+                    style={{width: 40}}
+                    disabled={(decks)?((decks.length > 0)?(false):(true)):(true)}
                 />
                 <View style={styles.separator}/>
             </View>
@@ -89,13 +92,16 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
         justifyContent: 'center',
+    },
+    flatStyle: {
+        flex:1,
     },
     separator: {
         backgroundColor: white,
         height: 10,
     }
+
 })
 
 export default connect(

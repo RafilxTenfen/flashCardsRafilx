@@ -89,6 +89,7 @@ class StartQuiz extends Component {
                                         onPress={() => {
                                             this.setState({bAnswer: true})
                                         }}
+                                        style={styles.btnQuestionAnswer}
                                     >
                                         <Text style={styles.textBtnQuestion}>Answer</Text>
                                     </TouchableOpacity>
@@ -100,6 +101,7 @@ class StartQuiz extends Component {
                                         onPress={() => {
                                             this.setState({bAnswer: false})
                                         }}
+                                        style={styles.btnQuestionAnswer}
                                     >
                                         <Text style={styles.textBtnQuestion}>Question</Text>
                                     </TouchableOpacity>
@@ -176,7 +178,6 @@ const styles = StyleSheet.create({
     questionView: {
         flex: 1,
         justifyContent:'center',
-        alignItems:'center',
         textAlign: 'center',
         marginTop: 60,
         paddingTop: 25,
@@ -187,16 +188,12 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     textBtnQuestion: {
-        flex:1,
-        marginTop: 10,
         fontSize:18,
         color: red,
-        textAlign: 'center'
     },
     btnView: {
         flex: 1,
         justifyContent:'center',
-        alignItems:'center',
         marginTop: 20
     },
     btnCorrect: {
@@ -211,6 +208,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         width: 150,
         height: 30,
+        marginLeft: 110,
     },
     btnIncorrect: {
         flex:1,
@@ -224,6 +222,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         width: 150,
         height: 30,
+        marginLeft: 110,
     },
     btnHome: {
         alignItems: 'center',
@@ -236,15 +235,27 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         width: 150,
         height: 25,
+        marginLeft: 110,
     },
     finalView: {
         flex: 1,
-        alignItems: 'center',
         justifyContent: 'center',
         fontSize:25
     },
     textPercent: {
         fontSize: 20
+    },
+    btnQuestionAnswer: {
+        borderColor: '#DDDDDD',
+        alignItems: 'center',
+        backgroundColor: '#DDDDDD',
+        borderWidth:1,
+        width: 80,
+        height: 35,
+        fontSize: 20,
+        marginLeft: 135,
+        marginTop: 10,
+        marginBottom: 10,
     }
 })
 

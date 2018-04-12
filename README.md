@@ -13,4 +13,8 @@ yarn install
 yarn start 
 ``` 
 
-Go to your phone in the expo app and scan the QRcode or just run in your emulator.
+Go to your android phone in the expo app and scan the QRcode or just run in your emulator.
+
+## Tested
+
+This app was tested with a android device

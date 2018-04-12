@@ -42,14 +42,15 @@ class DeckIndividual extends Component {
         const questions = this.props.decks[deck.title].questions
 
         return (
-            <ScrollView>
+            <ScrollView style={{textAlign: 'center'}}>
                 <View style={styles.scrollView}>
                     <View style={styles.cardView}>
                         <Text style={styles.cardTitle}>
                             {(deck.title)?(deck.title):(this.props.navigation.state.params.deck.title)}
                         </Text>
                         <Text style={styles.cardNumbers}>
-                            {(questions) ? (questions.length + ' Cards') : (0 + ' Card')}
+                            {(questions) ? (questions.length
+                                + ' Cards') : (0 + ' Card')}
                         </Text>
                     </View>
                     <View style={styles.btnView}>
@@ -92,26 +93,25 @@ const styles = StyleSheet.create({
     scrollView: {
         flex:1,
         justifyContent: 'space-between',
-        alignItems: 'center'
     },
     cardView: {
         flex:1,
         justifyContent:'center',
-        alignItems:'center',
         marginTop: 100,
     },
     cardTitle: {
         fontSize: 30,
-        color: black
+        color: black,
+        textAlign: 'center'
     },
     cardNumbers: {
         color: gray,
-        fontSize: 20
+        fontSize: 20,
+        textAlign: 'center'
     },
     btnView: {
       flex: 1,
       justifyContent:'space-around',
-      alignItems:'center',
       marginTop: 70,
     },
     btnAdd: {
@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         width: 150,
         height: 45,
+        marginLeft: 100,
     },
     btnStart: {
         flex:1,
@@ -137,6 +138,7 @@ const styles = StyleSheet.create({
         borderWidth:2,
         width: 150,
         height: 45,
+        marginLeft: 100,
     }
 
 })

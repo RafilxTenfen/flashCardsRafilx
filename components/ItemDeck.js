@@ -10,17 +10,17 @@ export default class ItemDeck extends Component {
         const { deck, navigation } = this.props
 
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, marginLeft: 50}}>
                 <TouchableOpacity style={styles.itemContainer}
                                   onPress={() => navigation.navigate(
                                       'DeckIndividual',
                                       { deck: deck.item }
                                   )}
                 >
-                    <Text style={{fontSize: 25, flexWrap: 'nowrap'}}>
+                    <Text style={{fontSize: 25, flexWrap: 'nowrap', textAlign: 'center'}}>
                         {capitalize(deck.item.title)}
                     </Text>
-                    <Text style={{color: gray, fontSize: 18}}>
+                    <Text style={{color: gray, fontSize: 18, textAlign:'center'}}>
                         {(deck.item.questions) ? (deck.item.questions.length + ' cards') : (0 + ' card')}
                     </Text>
                 </TouchableOpacity>

@@ -18,7 +18,7 @@ class AddNewCard extends Component {
     }
 
     static navigationOptions = ({navigation}) => {
-        var sTitle = navigation.state.params.deck.title.split(' ')
+        var sTitle = navigation.state.params.deck.title.split(" ")
 
         const title = {
             title: `Add Card to ${sTitle[0]}`
@@ -116,7 +116,6 @@ const styles = StyleSheet.create({
     btnView: {
         flex: 1,
         justifyContent:'center',
-        alignItems:'center',
         marginTop: -20
     },
     btnSubmit: {
@@ -129,6 +128,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         width: 120,
         height: 45,
+        marginLeft: 110,
     },
     btnClean: {
         alignItems: 'center',
@@ -140,6 +140,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         width: 120,
         height: 45,
+        marginLeft: 110,
     },
     inputTextQuestion: {
         marginLeft: 2,
